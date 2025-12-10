@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawa Sweet House - Pâtisserie & Décoration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-brown: #6B3B2F;
+            --secondary-brown: #9D0208;
+            --accent-red: #960107;
+            --dark-red: #9F0307;
+            --light-gold: #BB8441;
+            --gold: #BE8037;
+            --cream: #FFFFFB;
+            --light-cream: #DED7C5;
+            --dark-text: #250D09;
+            --shadow: rgba(107, 59, 47, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--cream);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .brand-name {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .brand-name span:first-child {
+            font-size: 1.8rem;
+            color: var(--primary-brown);
+        }
+
+        .brand-name span:last-child {
+            font-size: 1.2rem;
+            color: var(--accent-red);
+        }
+
+        .subtitle {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .subtitle span {
+            font-size: 0.9rem;
+            color: var(--primary-brown);
+        }
+
+        .subtitle span + span::before {
+            content: "•";
+            margin: 0 8px;
+            font-size: 1.2rem;
+            position: relative;
+            top: -1px;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-brown);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--primary-brown);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: var(--secondary-brown);
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-brown);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--light-gold);
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            color: var(--cream);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-red);
+            color: var(--cream);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(150, 2, 7, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--cream);
+            color: var(--accent-red);
+            border: 2px solid var(--dark-text);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light-cream);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 13, 9, 0.1);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-brown);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--dark-text);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--cream);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(107, 59, 47, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-info span {
+            font-weight: 600;
+            color: var(--primary-brown);
+            font-size: 1.1rem;
+        }
+
+        /* Custom Order Section */
+        .custom-order {
+            padding: 60px 20px;
+            background-color: var(--light-cream);
+        }
+
+        .order-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .order-form-container, .about-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .order-form-container h2, .about-container h2 {
+            color: var(--primary-brown);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .order-form-container p, .about-container p {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary-brown);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Arial', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-brown);
+            box-shadow: 0 0 0 2px rgba(107, 59, 47, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background-color: var(--dark-red);
+            color: var(--cream);
+            border: none;
+            padding: 14px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-red);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(159, 3, 7, 0.3);
+        }
+
+        .about-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about-image {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .about-image img:hover {
+            transform: scale(1.03);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--primary-brown);
+            border-left: 3px solid var(--light-gold);
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+
+        .more-btn {
+            align-self: flex-start;
+            margin-top: 10px;
+            background-color: var(--light-cream);
+            color: var(--primary-brown);
+            border: 2px solid var(--primary-brown);
+        }
+
+        .more-btn:hover {
+            background-color: var(--primary-brown);
+            color: var(--cream);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--gold);
+            color: var(--cream);
+            padding: 40px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--cream);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-red);
+            transform: translateY(-5px);
+        }
+
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                order: 2;
+            }
+            
+            .hero-image {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            
+            .order-container {
+                flex-direction: column;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                align-items: center;
+                margin-bottom: 15px;
+            }
+            
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+                margin-top: 15px;
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+                border-top: 1px solid rgba(107, 59, 47, 0.1);
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 20px;
+            }
+            
+            .hero {
+                padding: 30px 15px;
+            }
+            
+            .products, .custom-order {
+                padding: 40px 15px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-brown);
+            color: var(--cream);
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            max-width: 300px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .notification.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="brand-name">
+                    <span>HAWA</span>
+                    <span>SWEET HOUSE</span>
+                </div>
+                <div class="subtitle">
+                    <span>PÂTISSERIE</span>
+                    <span>DÉCORATION</span>
+                </div>
+            </div>
+            
+            <nav class="navbar">
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="#custom-order">Commande personnalisée</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1>Des pâtisseries et décorations sur mesure pour toutes vos occasions</h1>
+                <p>Gâteaux personnalisés, cupcakes, décorations événementielles faits avec passion et créativité pour vos moments spéciaux.</p>
+                <div class="hero-buttons">
+                    <a href="boutique.html" class="btn btn-primary">Voir la boutique</a>
+                    <a href="#custom-order" class="btn btn-secondary">Commande personnalisée</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in delay-1">
+                <img src="images/image-hero.jpeg" alt="Gâteau personnalisé Hawa Sweet House">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h2 class="section-title fade-in">Produits populaires</h2>
+        <p class="section-subtitle fade-in delay-1">Découvrez nos créations les plus appréciées par nos clients</p>
+        
+        <div class="products-grid">
+            <div class="product-card fade-in delay-1">
+                <div class="product-image">
+                    <img src="images/gâteau.jpeg" alt="Gâteau personnalisé">
+                </div>
+                <div class="product-info">
+                    <span>Gâteau personnalisé</span>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in delay-2">
+                <div class="product-image">
+                    <img src="images/cakes.jpeg" alt="Cupcakes">
+                </div>
+                <div class="product-info">
+                    <span>Cupcakes</span>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in delay-3">
+                <div class="product-image">
+                    <img src="images/gâteau-anniversaire.jpeg" alt="Pâtisseries spéciales">
+                </div>
+                <div class="product-info">
+                    <span>Pâtisseries spéciales</span>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in delay-1">
+                <div class="product-image">
+                    <img src="images/décoration-salle.jpeg" alt="Décorations d'événements">
+                </div>
+                <div class="product-info">
+                    <span>Décorations d'événements</span>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in delay-2">
+                <div class="product-image">
+                    <img src="images/croissants.jpeg" alt="Croissants">
+                </div>
+                <div class="product-info">
+                    <span>Croissants</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Order Section -->
+    <section class="custom-order" id="custom-order">
+        <div class="order-container">
+            <div class="order-form-container fade-in">
+                <h2>Commande sur mesure</h2>
+                <p>Créez le gâteau parfait : choisissez le goût, la décoration, le thème et la date de livraison. Nous réalisons exactement ce que vous imaginez.</p>
+                
+                <form id="commandeForm">
+                    <div class="form-group">
+                        <label for="typeGateau">Type de gâteau :</label>
+                        <select id="typeGateau" class="form-control" required>
+                            <option value="">Sélectionnez</option>
+                            <option value="Gâteau d'anniversaire">Gâteau d'anniversaire</option>
+                            <option value="Gâteau de mariage">Gâteau de mariage</option>
+                            <option value="Cakes">Cakes</option>
+                            <option value="Cupcakes">Cupcakes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parts">Nombre de parts :</label>
+                        <input type="number" id="parts" class="form-control" placeholder="Ex: 12 parts" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gout">Saveur/Goût :</label>
+                        <select id="gout" class="form-control" required>
+                            <option value="">Choisir</option>
+                            <option value="Vanille">Vanille</option>
+                            <option value="Chocolat">Chocolat</option>
+                            <option value="Fraise">Fraise</option>
+                            <option value="Citron">Citron</option>
+                            <option value="Red Velvet">Red Velvet</option>
+                            <option value="Café">Café</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="decoration">Thème du gâteau :</label>
+                        <select id="decoration" class="form-control" required>
+                            <option value="">-- Choisissez un thème --</option>
+                            <option value="Anniversaire">Anniversaire</option>
+                            <option value="Mariage">Mariage</option>
+                            <option value="Baby Shower">Baby Shower</option>
+                            <option value="Licorne">Licorne</option>
+                            <option value="Super-Héros">Super-Héros</option>
+                            <option value="Princesse">Princesse</option>
+                            <option value="Football">Football</option>
+                            <option value="Tropical">Tropical</option>
+                            <option value="Autre">Autre (précisez)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="autreTheme" style="display:none;">
+                        <label for="autreThemeInput">Précisez le thème :</label>
+                        <input type="text" id="autreThemeInput" class="form-control" placeholder="Ex : Licorne pastel, PSG...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Détails supplémentaires :</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Décrivez la décoration souhaitée, les couleurs, les inscriptions..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="client_phone">Votre numéro :</label>
+                        <input type="tel" id="client_phone" class="form-control" placeholder="Ex : 229XXXXXXXX" pattern="[0-9]{9,12}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Date de livraison :</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Envoyer la demande</button>
+                </form>
+            </div>
+            
+            <div class="about-container fade-in delay-1" id="about">
+                <div class="about-image">
+                    <img src="images/photo.jpeg" alt="Hawa Sweet House">
+                </div>
+                <p>Passionnée par la pâtisserie et la décoration événementielle, je crée des gâteaux uniques et adaptés à chaque occasion. Chaque commande est réalisée avec soin, hygiène et amour du détail.</p>
+                <p>Mon objectif : transformer vos événements en moments inoubliables grâce à des créations entièrement personnalisées.</p>
+                <p class="quote">"De la passion, du soin et du goût dans chaque création."</p>
+                <a href="boutique.html" class="btn btn-secondary more-btn">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <h3 class="footer-title">Contact et Informations</h3>
+            
+            <ul class="social-links">
+                <li>
+                    <a href="https://www.facebook.com/share/17RouZ69ZT/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/22956221390" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="tel:+2290156221390" aria-label="Téléphone">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:hawasweethouse@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="contact-info">
+                <p><strong>Téléphone:</strong> +229 01 56221390</p>
+                <p><strong>Disponibilité:</strong> Tous les jours de 8h à 20h</p>
+                <p><strong>Localisation:</strong> Atelier basé à Cotonou - commandes sur réservation</p>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 - Hawa Sweet House. Fait avec passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <p id="notification-text"></p>
+    </div>
+
+    <script>
+        // Navigation mobile
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Gestion du champ "Autre" pour le thème
+        const decorationSelect = document.getElementById('decoration');
+        const autreThemeDiv = document.getElementById('autreTheme');
+        
+        decorationSelect.addEventListener('change', function() {
+            if (this.value === 'Autre') {
+                autreThemeDiv.style.display = 'block';
+                document.getElementById('autreThemeInput').setAttribute('required', 'required');
+            } else {
+                autreThemeDiv.style.display = 'none';
+                document.getElementById('autreThemeInput').removeAttribute('required');
+            }
+        });
+        
+        // Validation et soumission du formulaire
+        const commandeForm = document.getElementById('commandeForm');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notification-text');
+        
+        commandeForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Récupération des valeurs
+            let typeGateau = document.getElementById('typeGateau').value.trim();
+            let parts = document.getElementById('parts').value.trim();
+            let gout = document.getElementById('gout').value.trim();
+            let decoration = document.getElementById('decoration').value.trim();
+            let autreThemeInput = document.getElementById('autreThemeInput').value.trim();
+            let message = document.getElementById('message').value.trim();
+            let date = document.getElementById('date').value.trim();
+            let clientPhone = document.getElementById('client_phone').value.trim();
+            
+            // Validation
+            if (!typeGateau || !parts || !gout || !decoration || !message || !date || !clientPhone) {
+                showNotification('Veuillez remplir tous les champs obligatoires !', 'error');
+                return;
+            }
+            
+            // Validation du numéro de téléphone
+            const phoneRegex = /^[0-9]{9,12}$/;
+            if (!phoneRegex.test(clientPhone)) {
+                showNotification('Veuillez entrer un numéro de téléphone valide (9 à 12 chiffres)', 'error');
+                return;
+            }
+            
+            // Si le thème est "Autre", utiliser la valeur saisie
+            if (decoration === 'Autre' && autreThemeInput) {
+                decoration = autreThemeInput;
+            } else if (decoration === 'Autre' && !autreThemeInput) {
+                showNotification('Veuillez préciser le thème du gâteau', 'error');
+                return;
+            }
+            
+            // Préparation du message WhatsApp
+            const numeroVendeur = '22956221390';
+            
+            const whatsappMessage = 
+                `Nouvelle commande personnalisée :%0A` +
+                `Type de gâteau : ${encodeURIComponent(typeGateau)}%0A` +
+                `Nombre de parts : ${encodeURIComponent(parts)}%0A` +
+                `Goût : ${encodeURIComponent(gout)}%0A` +
+                `Thème / Décoration : ${encodeURIComponent(decoration)}%0A` +
+                `Message : ${encodeURIComponent(message)}%0A` +
+                `Date souhaitée : ${encodeURIComponent(date)}%0A` +
+                `Numéro du client : ${encodeURIComponent(clientPhone)}`;
+            
+            // Redirection vers WhatsApp
+            const whatsappURL = `https://wa.me/${numeroVendeur}?text=${whatsappMessage}`;
+            
+            // Afficher une notification de confirmation
+            showNotification('Votre demande a été envoyée ! Redirection vers WhatsApp...', 'success');
+            
+            // Redirection après 2 secondes
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                commandeForm.reset();
+                autreThemeDiv.style.display = 'none';
+            }, 2000);
+        });
+        
+        // Fonction pour afficher les notifications
+        function showNotification(message, type) {
+            notificationText.textContent = message;
+            
+            // Changer la couleur selon le type
+            if (type === 'error') {
+                notification.style.backgroundColor = '#9D0208';
+            } else {
+                notification.style.backgroundColor = '#6B3B2F';
+            }
+            
+            notification.classList.add('show');
+            
+            // Masquer la notification après 5 secondes
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+        
+        // Date minimale pour le champ date (aujourd'hui)
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+        
+        // Animation au défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments avec la classe fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Fermer la notification en cliquant dessus
+        notification.addEventListener('click', () => {
+            notification.classList.remove('show');
+        });
+    </script>
+</body>
+</html>
